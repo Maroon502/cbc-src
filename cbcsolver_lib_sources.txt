@@ -1,0 +1,11 @@
+Cbc_C_Interface.cpp
+CbcCbcParam.cpp
+Cbc_ampl.cpp
+CbcLinked.cpp
+CbcLinkedUtils.cpp
+unitTestClp.cpp
+CbcSolver.cpp
+CbcSolverHeuristics.cpp
+CbcSolverAnalyze.cpp
+CbcMipStartIO.cpp
+CbcSolverExpandKnapsack.cpp

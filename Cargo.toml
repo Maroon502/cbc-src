@@ -1,0 +1,36 @@
+[package]
+name = "cbc-src"
+version = "0.1.0+0.60.6"
+edition = "2021"
+build = "build.rs"
+links = "Cbc"
+license = "Apache-2.0"
+description = "The low-level bindings to the COIN-OR Cbc library."
+repository = "https://github.com/Maroon502/cbc-src.git"
+keywords = ["coin-or", "Cbc", "Cbc-src"]
+readme = "README.md"
+authors = [
+    "Maroon502<maroon502@outlook.com>"
+]
+exclude = [
+    "Cbc/**/*",
+    "!Cbc/Cbc/src/**/*",
+    "!**/LICENSE",
+    "!**/AUTHORS",
+]
+
+[features]
+default = []
+cbcsolver = []
+
+
+[dependencies]
+coinutils-src = {git = "https://github.com/Maroon502/coinutils-src.git"}
+osi-src = {git = "https://github.com/Maroon502/osi-src.git"}
+clp-src = {git = "https://github.com/Maroon502/clp-src.git", default-features = false, features = ["with_osi"]}
+cgl-src = {git = "https://github.com/Maroon502/cgl-src.git"}
+
+
+[build-dependencies]
+cc = "1.0"
+coin-build-tools = { git = "https://github.com/Maroon502/coin-build-tools.git" }
