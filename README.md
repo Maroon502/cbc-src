@@ -11,7 +11,7 @@ Just add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-cbc-src = "0.1"
+cbc-src = "0.2"
 ```
 
 ## Configuration
