@@ -20,17 +20,20 @@ exclude = [
 ]
 
 [features]
-default = []
+default = ["osicbc", "cbcsolver"]
 cbcsolver = []
+osicbc = []
+parallel = []
 
 
 [dependencies]
 coinutils-src = {git = "https://github.com/Maroon502/coinutils-src.git"}
 osi-src = {git = "https://github.com/Maroon502/osi-src.git"}
-clp-src = {git = "https://github.com/Maroon502/clp-src.git", default-features = false, features = ["with_osi"]}
+clp-src = {git = "https://github.com/Maroon502/clp-src.git", default-features = false, features = ["osiclp"]}
 cgl-src = {git = "https://github.com/Maroon502/cgl-src.git"}
 
 
 [build-dependencies]
 cc = "1.0"
 coin-build-tools = { git = "https://github.com/Maroon502/coin-build-tools.git" }
+bindgen = "0.64"
