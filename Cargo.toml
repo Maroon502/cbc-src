@@ -28,7 +28,7 @@ parallel = []
 
 
 [dependencies]
-coinutils-src = "0.1"
+coinutils-src = "0.2"
 osi-src = "0.2"
 clp-src = { version = "0.2", default-features = false, features = ["osiclp"] }
 cgl-src = "0.2"
