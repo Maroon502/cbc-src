@@ -18,9 +18,9 @@ cbc-src = "0.1"
 
 The following Cargo features are supported:
 
-* `default` to `with_osi` feature;
-* `with_clp` to build with Clp support;
-
+* `default` to `osicbc` and `cbcsolver` feature;
+* `osicbc` to build with `Osi` supported. However the `Osi` is always built, by which the `Cbc` call the `Clp` solver and `Cgl` library;
+* `cbcsolver` to build `CbcSolver` lib and crate the api for `Rust`. If you do not use `Cbc` directly, you can disable this feature to reduce the build time;
 
 The package build from the source and link statically by default. It also provide the following environment variables to allow users to link to system library customly:
 
