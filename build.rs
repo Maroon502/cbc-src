@@ -1,14 +1,23 @@
 use std::env;
 use std::path::{Path, PathBuf};
 
-use coin_build_tools::{utils, link, coinbuilder};
+use coin_build_tools::{coinbuilder, link, utils};
 
 const LIB_NAME: &str = "Cbc";
 
 fn main() {
-    println!("cargo:rerun-if-changed={}_lib_sources.txt", LIB_NAME.to_ascii_lowercase());
-    println!("cargo:rerun-if-env-changed=CARGO_{}_STATIC", LIB_NAME.to_ascii_uppercase());
-    println!("cargo:rerun-if-env-changed=CARGO_{}_SYSTEM", LIB_NAME.to_ascii_uppercase());
+    println!(
+        "cargo:rerun-if-changed={}_lib_sources.txt",
+        LIB_NAME.to_ascii_lowercase()
+    );
+    println!(
+        "cargo:rerun-if-env-changed=CARGO_{}_STATIC",
+        LIB_NAME.to_ascii_uppercase()
+    );
+    println!(
+        "cargo:rerun-if-env-changed=CARGO_{}_SYSTEM",
+        LIB_NAME.to_ascii_uppercase()
+    );
 
     if cfg!(feature = "cbcsolver") {
         bindgen_lib();
@@ -17,7 +26,6 @@ fn main() {
     let want_system = utils::want_system(LIB_NAME);
 
     if want_system && link::link_lib_system_if_supported(LIB_NAME) {
-        
         let mut coinflags = vec!["CBC".to_string()];
 
         let link_type = if utils::want_static(LIB_NAME) {
@@ -30,13 +38,13 @@ fn main() {
             println!("cargo:rustc-link-lib={}=OsiCbc", link_type);
             coinflags.push("OSICBC".to_string());
         }
-        
+
         if cfg!(feature = "cbcsolver") {
             println!("cargo:rustc-link-lib={}=CbcSolver", link_type);
             coinflags.push("CBCSOLVER".to_string());
         }
 
-        coinbuilder::print_metedata(Vec::new(), coinflags);     
+        coinbuilder::print_metedata(Vec::new(), coinflags);
         return;
     }
 
@@ -56,9 +64,7 @@ fn build_lib_and_link() {
             .display()
     );
 
-    let mut includes_dir = vec![
-        format!("{}", src_dir),
-    ];
+    let mut includes_dir = vec![format!("{}", src_dir)];
 
     let mut lib_sources = include_str!("cbc_lib_sources.txt")
         .trim()
@@ -68,7 +74,7 @@ fn build_lib_and_link() {
 
     let mut coinflags = vec!["CBC".to_string()];
 
-    if cfg!(feature = "osicbc"){
+    if cfg!(feature = "osicbc") {
         lib_sources.push(format!("{}/OsiCbc/OsiCbcSolverInterface.cpp", src_dir));
         includes_dir.push(format!("{}/OsiCbc", src_dir));
         coinflags.push("OSICBC".to_string());
@@ -92,7 +98,6 @@ fn build_lib_and_link() {
     includes_dir.extend(include_other);
     coinflags.extend(coinflags_other);
 
-
     let mut config = coinbuilder::init_builder();
     if cfg!(feature = "parallel") {
         config.define("CBC_THREAD", None);
@@ -107,10 +112,10 @@ fn build_lib_and_link() {
 
     if cfg!(feature = "cbcsolver") {
         let lib_sources = include_str!("cbcsolver_lib_sources.txt")
-        .trim()
-        .split('\n')
-        .map(|file| format!("{}/{}", src_dir, file.trim()))
-        .collect::<Vec<String>>();
+            .trim()
+            .split('\n')
+            .map(|file| format!("{}/{}", src_dir, file.trim()))
+            .collect::<Vec<String>>();
 
         let mut config = coinbuilder::init_builder();
         coinflags.iter().for_each(|flag| {
@@ -124,7 +129,6 @@ fn build_lib_and_link() {
         config.files(lib_sources);
         config.compile("CbcSolver");
     }
-
 }
 
 fn bindgen_lib() {
@@ -147,11 +151,11 @@ fn bindgen_lib() {
         .collect::<Vec<String>>();
 
     let bindings = bindgen::Builder::default()
-    .header(header_file)
-    .clang_args(clang_args.iter())
-    .trust_clang_mangling(false)
-    .generate()
-    .expect("Unable to generate bindings");
+        .header(header_file)
+        .clang_args(clang_args.iter())
+        .trust_clang_mangling(false)
+        .generate()
+        .expect("Unable to generate bindings");
 
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
 
