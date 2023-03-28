@@ -6,7 +6,7 @@ build = "build.rs"
 links = "Cbc"
 license = "Apache-2.0"
 documentation = "https://docs.rs/cbc-src/"
-description = "The low-level bindings to the COIN-OR Cbc library."
+description = "Redistribution of Coin-OR Cbc as a crate"
 repository = "https://github.com/Maroon502/cbc-src.git"
 keywords = ["coin-or", "Cbc", "Cbc-src"]
 readme = "README.md"
@@ -21,7 +21,7 @@ exclude = [
 ]
 
 [features]
-default = ["osicbc", "cbcsolver"]
+default = ["osicbc"]
 cbcsolver = []
 osicbc = []
 parallel = []

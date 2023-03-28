@@ -3,7 +3,9 @@
 [![Package][package-img]][package-url] [![Documentation][documentation-img]][documentation-url] [![License][license-img]][license-url]
 
 The package provides Low-level bindings to the [Cbc] library. [Cbc] build with [CoinUtils] ([CoinUtils-src]), [Osi] ([Clp-src]), [Cgl] ([Cgl-src]) and [Clp] ([Clp-src]) support.
-                                
+
+By this package, you don't need to worry about installing CBC in the system, and it's a package for **all platforms**.
+
 Cbc (Coin-or branch and cut) is an open-source mixed integer linear programming solver written in C++. It can be used as a callable library or using a stand-alone executable. It can be used in a wide variety of ways through various modeling systems, packages, etc.
 
 ## Usage
