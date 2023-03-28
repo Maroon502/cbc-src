@@ -19,10 +19,6 @@ fn main() {
         LIB_NAME.to_ascii_uppercase()
     );
 
-    if cfg!(feature = "cbcsolver") {
-        bindgen_lib();
-    }
-
     let want_system = utils::want_system(LIB_NAME);
 
     if want_system && link::link_lib_system_if_supported(LIB_NAME) {
@@ -80,8 +76,6 @@ fn build_lib_and_link() {
         coinflags.push("OSICBC".to_string());
     }
 
-    coinbuilder::print_metedata(includes_dir.clone(), coinflags.clone());
-
     let (include_other, coinflags_other) = coinbuilder::get_metedata_from("CoinUtils");
     includes_dir.extend(include_other);
     coinflags.extend(coinflags_other);
@@ -97,6 +91,8 @@ fn build_lib_and_link() {
     let (include_other, coinflags_other) = coinbuilder::get_metedata_from("Cgl");
     includes_dir.extend(include_other);
     coinflags.extend(coinflags_other);
+
+    coinbuilder::print_metedata(includes_dir.clone(), coinflags.clone());
 
     let mut config = coinbuilder::init_builder();
     if cfg!(feature = "parallel") {
@@ -129,37 +125,4 @@ fn build_lib_and_link() {
         config.files(lib_sources);
         config.compile("CbcSolver");
     }
-}
-
-fn bindgen_lib() {
-    let (include_other, _) = coinbuilder::get_metedata_from("CoinUtils");
-
-    let src_dir = format!(
-        "{}",
-        PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap())
-            .join(LIB_NAME)
-            .join(LIB_NAME)
-            .join("src")
-            .display()
-    );
-
-    let header_file = format!("{}/Cbc_C_Interface.h", src_dir);
-
-    let clang_args = include_other
-        .iter()
-        .map(|dir| format!("-I{}", dir))
-        .collect::<Vec<String>>();
-
-    let bindings = bindgen::Builder::default()
-        .header(header_file)
-        .clang_args(clang_args.iter())
-        .trust_clang_mangling(false)
-        .generate()
-        .expect("Unable to generate bindings");
-
-    let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
-
-    bindings
-        .write_to_file(out_path.join("bindings.rs"))
-        .expect("Couldn't write bindings!");
 }
