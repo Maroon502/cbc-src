@@ -40,7 +40,7 @@ fn main() {
             coinflags.push("CBCSOLVER".to_string());
         }
 
-        coinbuilder::print_metedata(Vec::new(), coinflags);
+        coinbuilder::print_metadata(Vec::new(), coinflags);
         return;
     }
 
@@ -76,23 +76,23 @@ fn build_lib_and_link() {
         coinflags.push("OSICBC".to_string());
     }
 
-    let (include_other, coinflags_other) = coinbuilder::get_metedata_from("CoinUtils");
+    let (include_other, coinflags_other) = coinbuilder::get_metadata_from("CoinUtils");
     includes_dir.extend(include_other);
     coinflags.extend(coinflags_other);
 
-    let (include_other, coinflags_other) = coinbuilder::get_metedata_from("Osi");
+    let (include_other, coinflags_other) = coinbuilder::get_metadata_from("Osi");
     includes_dir.extend(include_other);
     coinflags.extend(coinflags_other);
 
-    let (include_other, coinflags_other) = coinbuilder::get_metedata_from("Clp");
+    let (include_other, coinflags_other) = coinbuilder::get_metadata_from("Clp");
     includes_dir.extend(include_other);
     coinflags.extend(coinflags_other);
 
-    let (include_other, coinflags_other) = coinbuilder::get_metedata_from("Cgl");
+    let (include_other, coinflags_other) = coinbuilder::get_metadata_from("Cgl");
     includes_dir.extend(include_other);
     coinflags.extend(coinflags_other);
 
-    coinbuilder::print_metedata(includes_dir.clone(), coinflags.clone());
+    coinbuilder::print_metadata(includes_dir.clone(), coinflags.clone());
 
     let mut config = coinbuilder::init_builder();
     if cfg!(feature = "parallel") {
