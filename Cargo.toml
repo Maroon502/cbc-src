@@ -37,4 +37,3 @@ cgl-src = "0.2"
 [build-dependencies]
 cc = "1.0"
 coin-build-tools = "0.2"
-bindgen = "0.64"

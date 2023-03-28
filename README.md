@@ -2,9 +2,9 @@
 
 [![Package][package-img]][package-url] [![Documentation][documentation-img]][documentation-url] [![License][license-img]][license-url]
 
-The package provides Low-level bindings to the [Cbc] library. [Cbc] build with [CoinUtils] ([CoinUtils-src]), [Osi] ([Clp-src]), [Cgl] ([Cgl-src]) and [Clp] ([Clp-src]) support.
+cbc-src crate is a *-src crate. This links Cbc libraries to executable build by cargo, but does not provide Rust bindings. [Cbc] build with [CoinUtils] ([CoinUtils-src]), [Osi] ([Clp-src]), [Cgl] ([Cgl-src]) and [Clp] ([Clp-src]) support.
 
-By this package, you don't need to worry about installing CBC in the system, and it's a package for **all platforms**.
+By this package, you don't need to worry about installing CBC in the system, and it can be built for **all platforms**.
 
 Cbc (Coin-or branch and cut) is an open-source mixed integer linear programming solver written in C++. It can be used as a callable library or using a stand-alone executable. It can be used in a wide variety of ways through various modeling systems, packages, etc.
 
@@ -14,6 +14,13 @@ Just add the following to your `Cargo.toml`:
 ```toml
 [dependencies]
 cbc-src = "0.2"
+```
+
+This package does not provide bindings. Please use [coincbc-sys], [coinclp-sys] to use Cbc, Clp, e.g.
+
+```toml
+[dependencies]
+coincbc-sys = { version = "0.2" }
 ```
 
 ## Configuration
@@ -106,7 +113,8 @@ will be licensed according to the terms given in [LICENSE](license-url).
 [Cgl-src]: https://github.com/Maroon502/cgl-src
 [Clp-src]: https://github.com/Maroon502/clp-src
 [Cbc-src]: https://github.com/Maroon502/cbc-src
-[BCP-src]: https://github.com/Maroon502/bcp-src
+[coincbc-sys]: https://github.com/Maroon502/coincbc-sys
+[coinclp-sys]: https://github.com/Maroon502/coinclp-sys
 
 [vcpkg]: https://github.com/Microsoft/vcpkg
 
