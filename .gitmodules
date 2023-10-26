@@ -1,8 +1,3 @@
-[submodule "Cgl"]
-	path = Cgl
-	url = https://github.com/coin-or/Cgl.git
-	branch = releases/0.60.6
 [submodule "Cbc"]
 	path = Cbc
 	url = https://github.com/coin-or/Cbc.git
-	branch = releases/2.10.8
