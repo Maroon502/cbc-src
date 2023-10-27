@@ -8,12 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.6+2.10.11](https://github.com/Maroon502/cbc-src/compare/v0.2.5+2.10.11...v0.2.6+2.10.11) - 2023-10-27
 
-### Other
-- Update CI
-- *(deps)* bump actions/checkout from 3 to 4
-- Update CI
-- Create dependabot.yml
-- *(deps)* change cc to parallel version
+### Change
+- *cc* change cc to parallel version
+
+### Docs
 - Update README.md
 
 ## [0.2.5+2.10.11](https://github.com/Maroon502/cbc-src/compare/v0.2.4+2.10.10...v0.2.5+2.10.11) - 2023-10-26
