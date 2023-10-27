@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.6+2.10.11](https://github.com/Maroon502/cbc-src/compare/v0.2.5+2.10.11...v0.2.6+2.10.11) - 2023-10-27
+
+### Change
+- *cc* change cc to parallel version
+
+### Docs
+- Update README.md
+
 ## [0.2.5+2.10.11](https://github.com/Maroon502/cbc-src/compare/v0.2.4+2.10.10...v0.2.5+2.10.11) - 2023-10-26
 
 ### Other
