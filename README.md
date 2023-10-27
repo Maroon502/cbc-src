@@ -9,11 +9,18 @@ By this package, you don't need to worry about installing CBC in the system, and
 Cbc (Coin-or branch and cut) is an open-source mixed integer linear programming solver written in C++. It can be used as a callable library or using a stand-alone executable. It can be used in a wide variety of ways through various modeling systems, packages, etc.
 
 ## Usage
-Just add the following to your `Cargo.toml`:
+
+1. Add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
 cbc-src = "0.2"
+```
+
+2. Add the following to your `lib.rs`:
+
+```toml
+extern crate cbc_src;
 ```
 
 This package does not provide bindings. Please use [coincbc-sys], [coinclp-sys] to use Cbc, Clp, e.g.
