@@ -5,9 +5,9 @@ permissions:
   contents: write
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+  # repository_dispatch:
+  #   types: [publish]
 
 jobs:
   release-plz:
