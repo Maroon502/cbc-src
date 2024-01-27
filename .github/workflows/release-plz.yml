@@ -8,10 +8,13 @@ on:
   workflow_dispatch:
   repository_dispatch:
     types: [publish]
+  push:
+    branches:
+      - master
 
 jobs:
   release-pr:
-    name: Release-pr
+    name: Release-plz
     runs-on: ubuntu-latest
     environment: Cargo
     steps:
@@ -24,10 +27,20 @@ jobs:
           git submodule update --init
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
+      - name: cargo update
+        run: cargo update
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
       - name: Run release-plz
         uses: MarcoIeni/release-plz-action@v0.5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
-        with: 
-          command: release-pr
