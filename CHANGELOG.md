@@ -11,12 +11,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - add more flag when linking libraries from system
 
-### Other
-- Update Action
-- Update Action
-- Update Action
-- Update Action
-
 ## [0.2.6+2.10.11](https://github.com/Maroon502/cbc-src/compare/v0.2.5+2.10.11...v0.2.6+2.10.11) - 2023-10-27
 
 ### Change
