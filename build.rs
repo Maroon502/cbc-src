@@ -40,6 +40,18 @@ fn main() {
             coinflags.push("CBCSOLVER".to_string());
         }
 
+        let (_, coinflags_other) = coinbuilder::get_metadata_from("CoinUtils");
+        coinflags.extend(coinflags_other);
+
+        let (_, coinflags_other) = coinbuilder::get_metadata_from("Osi");
+        coinflags.extend(coinflags_other);
+
+        let (_, coinflags_other) = coinbuilder::get_metadata_from("Clp");
+        coinflags.extend(coinflags_other);
+    
+        let (_, coinflags_other) = coinbuilder::get_metadata_from("Cgl");
+        coinflags.extend(coinflags_other);
+
         coinbuilder::print_metadata(Vec::new(), coinflags);
         return;
     }
