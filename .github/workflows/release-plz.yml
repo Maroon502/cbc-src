@@ -39,6 +39,8 @@ jobs:
             target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-
+      - name: Remove Cargo.lock
+        run: rm -rf Cargo.lock
       - name: Run release-plz
         uses: MarcoIeni/release-plz-action@v0.5
         env:
