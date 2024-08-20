@@ -1,6 +1,6 @@
 [package]
 name = "cbc-src"
-version = "0.2.8+2.10.12"
+version = "0.2.9+2.10.12"
 edition = "2021"
 build = "build.rs"
 links = "Cbc"
