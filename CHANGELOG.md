@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.8+2.10.12](https://github.com/Maroon502/cbc-src/compare/v0.2.7+2.10.11...v0.2.8+2.10.12) - 2024-08-20
+
+### Other
+- Update Cbc from 2.10.11 to 2.10.12
+
 ## [0.2.7+2.10.11](https://github.com/Maroon502/cbc-src/compare/v0.2.6+2.10.11...v0.2.7+2.10.11) - 2024-04-11
 
 ### Fixed
